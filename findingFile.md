@@ -80,6 +80,8 @@ userInfo[msg.sender] = UserInfo({
     tokenId: tokenId,
 });
 ```
+Then ensure endRental() can only operate on the NFT recorded for that renter, or preferably derive the NFT and token ID directly from userInfo[msg.sender] instead of accepting them as attacker-controlled parameters.
+
 #### Learning Notes
 
 This audit helped me practice:
@@ -100,7 +102,5 @@ When a function acts on an asset, don't just check who is calling it. Check that
 This is a personal security-learning exercise and self-audit of my own project. It is not a professional security audit.
     isRentingNft: true,
     expiry: expiry
-});
-```
 
-Then ensure endRental() can only operate on the NFT recorded for that renter, or preferably derive the NFT and token ID directly from userInfo[msg.sender] instead of accepting them as attacker-controlled parameters.
+

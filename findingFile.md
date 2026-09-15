@@ -78,6 +78,26 @@ userInfo[msg.sender] = UserInfo({
     user: msg.sender,
     nftAddress: nftAddress,
     tokenId: tokenId,
+});
+```
+#### Learning Notes
+
+This audit helped me practice:
+
+Reading contract state flow rather than only looking for known vulnerabilities
+Identifying missing authorization/state-binding checks
+Following user-controlled parameters into storage lookups
+Forming a vulnerability hypothesis
+Building a Foundry PoC to confirm the hypothesis
+Assessing real-world impact from an actual successful exploit
+
+Key takeaway-
+
+When a function acts on an asset, don't just check who is calling it. Check that the asset being acted upon is actually authorized for that caller.
+
+#### Disclaimer
+
+This is a personal security-learning exercise and self-audit of my own project. It is not a professional security audit.
     isRentingNft: true,
     expiry: expiry
 });
